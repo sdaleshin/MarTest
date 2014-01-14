@@ -1,11 +1,13 @@
-App.module('HeaderApp.Show', function (Show, App, Backbone, Marionette, $, _) {
+define(["app", "tpl!apps/header/show/templates/header-view.ejs"], function (App, view_template) {
+    App.module('HeaderApp.Show', function (Show, App, Backbone, Marionette, $, _) {
 
-    Show.Header = Marionette.ItemView.extend({
-        template: _.template($('#header-show-view').html()),
-        setActiveMenuItem: function (item) {
-            this.$('.main-menu li').removeClass('active');
-            this.$('.' + item).addClass('active');
-        }
+        Show.Header = Marionette.ItemView.extend({
+            template: view_template,
+            setActiveMenuItem: function (item) {
+                this.$('.main-menu li').removeClass('active');
+                this.$('.' + item).addClass('active');
+            }
+        });
+
     });
-
 });

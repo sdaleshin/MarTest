@@ -6,5 +6,25 @@
 
 .jumbotron {
     background-color: #532E7A;
-    color:white;
+    color: white;
+}
+
+.user-info-label {
+    text-align: right;
+    color: #808080;
+}
+
+body {
+    font-family: "Open Sans";
+    font-weight: 600;
+}
+
+.user-info-row {
+    height: 30px;
+}
+
+blockquote {
+    padding: 45px 21px;
+    border-left: 3px solid #eee;
+    margin-top: 37px;
 }

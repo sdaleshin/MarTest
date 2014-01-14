@@ -31,6 +31,6 @@ require.config({
 
 //"apps/users/user_app", "apps/header/header_app", "apps/footer/footer_app"
 
-require(["app", "apps/users/user_app"], function (App) {
+require(["app", "apps/users/user_app", "apps/header/header_app"], function (App) {
     App.start();
 });

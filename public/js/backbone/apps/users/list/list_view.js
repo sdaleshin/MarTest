@@ -19,7 +19,7 @@ define(["app", "tpl!apps/users/list/templates/list-layout.ejs", "tpl!apps/users/
         });
 
         List.Panel = Marionette.ItemView.extend({
-            template: list_item_template//_.template($('#users-list-item').html())
+            template: list_item_template
         });
 
     });
