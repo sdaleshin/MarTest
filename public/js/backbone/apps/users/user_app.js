@@ -1,4 +1,4 @@
-define(["app","apps/users/list/list_controller"], function (App) {
+define(["app"], function (App) {
     App.module('UserApp', function (UserApp, App, Backbone, Marionette, $, _) {
 
         UserApp.Router = Marionette.AppRouter.extend({
@@ -12,7 +12,9 @@ define(["app","apps/users/list/list_controller"], function (App) {
         var API = {
             editUser: function (id) {
                 App.execute("set-active-menu-item:action", "users");
-                return UserApp.Edit.Controller.editUser(id);
+                require(["apps/users/edit/edit_controller"], function () {
+                    return new UserApp.Edit.Controller({id: id});
+                });
             },
             showUser: function (id) {
                 App.execute("set-active-menu-item:action", "users");
@@ -20,7 +22,9 @@ define(["app","apps/users/list/list_controller"], function (App) {
             },
             listUsers: function () {
                 App.execute("set-active-menu-item:action", "users");
-                return UserApp.List.Controller.listUsers();
+                require(["apps/users/list/list_controller"], function () {
+                    return new UserApp.List.Controller();
+                });
             }
 
         };

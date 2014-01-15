@@ -1,19 +1,20 @@
-define(["app"], function (App) {
+define(["app","entities/user","apps/users/list/list_view"], function (App) {
     App.module('UserApp.List', function (List, App, Backbone, Marionette, $, _) {
 
-        List.Controller = {
-
-            listUsers: function () {
-                require(["entities/user", "apps/users/list/list_view"], _.bind(function () {
-                    App.request("user:entities", _.bind(function (users) {
-                        this.layout = this.getLayoutView();
-                        this.layout.on('show', function () {
-                            //showPanel(users);
-                            this.showTable(users);
-                        }, this);
-                        App.mainRegion.show(this.layout);
-                    }, this));
+        List.Controller = Marionette.Controller.extend({
+            initialize: function(){
+                App.request("user:entities", _.bind(function (users) {
+                    this.layout = this.getLayoutView();
+                    this.layout.on('show', function () {
+                        //showPanel(users);
+                        this.showTable(users);
+                    }, this);
+                    App.mainRegion.show(this.layout);
                 }, this));
+            },
+            editUserEntity: function (view) {
+                //debugger;
+                App.navigate('users/' + view.model.id + '/edit', true);
             },
 
             getLayoutView: function () {
@@ -30,14 +31,33 @@ define(["app"], function (App) {
             },
 
             showTable: function () {
-                tableView = this.getTableView(users);
+                var tableView = this.getTableView(users);
                 this.layout.tableRegion.show(tableView);
+                this.listenTo(tableView, 'itemview:edit:user:entity', this.editUserEntity);
             },
 
             getTableView: function (users) {
                 return new List.Users({ collection: users });
             }
-        }
+        });
+        
+
+            //listUsers: function () {
+            //    require(["entities/user", "apps/users/list/list_view"], _.bind(function () {
+            //        App.request("user:entities", _.bind(function (users) {
+            //            this.layout = this.getLayoutView();
+            //            this.layout.on('show', function () {
+            //                //showPanel(users);
+            //                this.showTable(users);
+            //            }, this);
+            //            App.mainRegion.show(this.layout);
+            //        }, this));
+            //    }, this));
+            //},
+
+
+            
+        //}
 
     });
 });
