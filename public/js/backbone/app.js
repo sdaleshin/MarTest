@@ -1,4 +1,4 @@
-﻿define(["marionette",'config/application'], function (Marionette) {
+﻿define(["marionette", 'config/application'], function (Marionette) {
     App = new Backbone.Marionette.Application();
 
     App.addRegions({

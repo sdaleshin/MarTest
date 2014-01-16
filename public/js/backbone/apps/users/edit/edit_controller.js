@@ -1,42 +1,44 @@
-define(["app"], function (App) {
-    App.module('UserApp.Edit', function (List, App, Backbone, Marionette, $, _) {
-
-        List.Controller = {
-
-            editUser: function (id) {
-                require(["entities/user", "apps/users/edit/edit_view"], _.bind(function () {
-                    App.request("user:entities", _.bind(function (users) {
-                        this.layout = this.getLayoutView();
-                        this.layout.on('show', function () {
-                            this.showPanel()
-                        }, this);
-                        App.mainRegion.show(this.layout);
-                    }, this));
-                }, this));
+define(["app", "entities/user", "apps/users/edit/edit_view"], function (App) {
+    App.module('UserApp.Edit', function (Edit, App, Backbone, Marionette, $, _) {
+        Edit.Controller = Marionette.Controller.extend({
+            initialize: function (options) {
+                options = options || {};
+                var id = options.id;
+                var user = App.request("user:entity", id);
+                App.execute("when:fetched", user, function () {
+                    this.layout = this.getLayoutView();
+                    this.layout.on('show', function () {
+                        this.showPanel(user);
+                    }, this);
+                    App.mainRegion.show(this.layout);
+                }, this);
             },
-
             getLayoutView: function () {
-                return new List.Layout();
+                return new Edit.Layout();
             },
 
-            showPanel: function (users) {
-                panelView = this.getPanelView(users);
+            showPanel: function (user) {
+                var panelView = this.getPanelView(user);
+                this.listenTo(panelView, 'btnSave:clicked', this.onBtnSaveClicked);
+                this.listenTo(panelView, 'btnCancel:clicked', this.onBtnCancelClicked);
                 this.layout.panelRegion.show(panelView);
             },
 
-            getPanelView: function (users) {
-                return new List.Panel({ collection: users });
+            onBtnCancelClicked: function(data){
+                App.navigate('users', true);
             },
 
-            showTable: function () {
-                tableView = this.getTableView(users);
-                this.layout.tableRegion.show(tableView);
+            onBtnSaveClicked: function(data){
+                var user = App.request('update:users:entity', data.model);
+                App.execute("when:fetched", user, function () {
+                    App.navigate('users', true);
+                }, this);
             },
 
-            getTableView: function (users) {
-                return new List.Users({ collection: users });
+            getPanelView: function (user) {
+                return new Edit.User({ model: user });
             }
-        }
+        });
 
     });
 });

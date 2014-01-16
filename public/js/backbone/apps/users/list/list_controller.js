@@ -3,14 +3,23 @@ define(["app","entities/user","apps/users/list/list_view"], function (App) {
 
         List.Controller = Marionette.Controller.extend({
             initialize: function(){
-                App.request("user:entities", _.bind(function (users) {
+                //App.request("user:entities", _.bind(function (users) {
+                //    this.layout = this.getLayoutView();
+                //    this.layout.on('show', function () {
+                //        //showPanel(users);
+                //        this.showTable(users);
+                //    }, this);
+                //    App.mainRegion.show(this.layout);
+                //}, this));
+                var users = App.request("user:entities");
+                App.execute("when:fetched", users, function () {
                     this.layout = this.getLayoutView();
                     this.layout.on('show', function () {
                         //showPanel(users);
                         this.showTable(users);
                     }, this);
                     App.mainRegion.show(this.layout);
-                }, this));
+                }, this);
             },
             editUserEntity: function (view) {
                 //debugger;

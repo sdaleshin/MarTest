@@ -28,3 +28,9 @@ blockquote {
     border-left: 3px solid #eee;
     margin-top: 37px;
 }
+.edit-user-info-row {
+    height: 40px;
+}
+    .edit-user-info-row .user-info-label {
+        padding-top: 5px;
+    }

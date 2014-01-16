@@ -5,7 +5,9 @@ require.config({
         underscore: '../vendor/underscore',
         jquery: '../vendor/jquery-1.10.1',
         marionette: '../vendor/backbone.marionette',
-        tpl: '../vendor/tpl'
+        tpl: '../vendor/tpl',
+        backbone_sync: '../backbone/config/sync',
+        backbone_stickit: '../vendor/backbone.stickit'
     },
     shim: {
         jquery: {
@@ -22,8 +24,14 @@ require.config({
             deps: ['jquery', 'underscore'],
             exports: 'Backbone'
         },
+        backbone_sync: {
+            deps: ['backbone']
+        },
+        backbone_stickit: {
+            deps: ['backbone']
+        },
         marionette: {
-            deps: ['jquery', 'underscore', 'backbone'],
+            deps: ['jquery', 'underscore', 'backbone', 'backbone_sync', 'backbone_stickit'],
             exports: 'Marionette'
         }
     }
