@@ -9,6 +9,7 @@ function UserShema () {
             Name: { type: String, required: true },
             Email: { type: String, required: true },
             Age: { type: Number, required: true },
-            Position: { type: String, required: false }
+            Position: { type: String, required: false },
+            Avatar: { data: String, contentType: String, required: false }
     });
 }

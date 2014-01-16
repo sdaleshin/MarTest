@@ -1,8 +1,12 @@
 <div class="row" style="height:200px">
   <div class="col-xs-3">
     <a class="th radius" href="#">
-      <img src="img/fry.jpg" style="height:180px; padding-top:10px" />
+      <img src="<%= 'data:image/png;base64,' + Avatar.data %>" style="height:180px; padding-top:10px" />
     </a>
+    <form method="post" enctype="multipart/form-data" action="<%= '/api/upload/' + _id %>">
+      <input type="file" name="file">
+      <input type="submit" value="Submit">
+    </form>
   </div>
   <div class="col-xs-5" style="padding-top:42px;">
     <div class="row edit-user-info-row">
