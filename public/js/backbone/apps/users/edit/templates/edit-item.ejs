@@ -1,12 +1,24 @@
 <div class="row" style="height:200px">
   <div class="col-xs-3">
-    <a class="th radius" href="#">
-      <img src="<%= 'data:image/png;base64,' + Avatar.data %>" style="height:180px; padding-top:10px" />
+    <a class="th radius avatar" href="#">
+      <% if (typeof Avatar != 'undefined') { %>
+        <img src="<%= 'data:image/png;base64,' + Avatar.data %>" style="height:180px; padding-top:10px" />
+      <% } else { %>
+        <img src="img/fry.jpg" style="height:180px; padding-top:10px" />
+      <% } %>
     </a>
-    <form method="post" enctype="multipart/form-data" action="<%= '/api/upload/' + _id %>">
+    
+    <!--<form method="post" enctype="multipart/form-data" action="<%= '/api/upload/' + _id %>">
       <input type="file" name="file">
-      <input type="submit" value="Submit">
-    </form>
+        <input type="submit" value="Submit">
+    </form>-->
+    <span class="btn btn-default fileinput-button" style="margin-top:5px">
+      <span>Avatar</span>
+      <!-- The file input field used as target for the file upload widget -->
+      <input id="fileupload" type="file" name="file" multiple="">
+    </span>
+    <div id="files" class="files"></div>
+    <br>
   </div>
   <div class="col-xs-5" style="padding-top:42px;">
     <div class="row edit-user-info-row">

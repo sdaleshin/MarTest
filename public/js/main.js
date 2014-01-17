@@ -7,7 +7,11 @@ require.config({
         marionette: '../vendor/backbone.marionette',
         tpl: '../vendor/tpl',
         backbone_sync: '../backbone/config/sync',
-        backbone_stickit: '../vendor/backbone.stickit'
+        backbone_stickit: '../vendor/backbone.stickit',
+        file_upload: '../vendor/fileupload/jquery.fileupload',
+        file_upload_image: '../vendor/fileupload/jquery.fileupload-image',
+        canvas_to_blob: '../vendor/fileupload/canvas-to-blob',
+        load_image: '../vendor/fileupload/load-image'
     },
     shim: {
         jquery: {
@@ -20,6 +24,10 @@ require.config({
             deps: ['underscore'],
             exports: 'Backbone'
         },
+        load_image: {
+            deps: ['jquery'],
+            //exports: 'loadImage'
+        },
         backbone: {
             deps: ['jquery', 'underscore'],
             exports: 'Backbone'
@@ -29,6 +37,10 @@ require.config({
         },
         backbone_stickit: {
             deps: ['backbone']
+        },
+        canvas_to_blob: {
+            deps: ['jquery'],
+            exports: 'dataURLtoBlob'
         },
         marionette: {
             deps: ['jquery', 'underscore', 'backbone', 'backbone_sync', 'backbone_stickit'],

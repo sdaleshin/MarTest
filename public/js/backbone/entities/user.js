@@ -13,12 +13,12 @@
         var API = {
             getUserEntities: function () {
                 users = new Entities.UsersCollection();
-                users.fetch({ reset: true });
+                users.fetch({ reset: true, cache:false });
                 return users;
             },
             getUserById: function (id) {
                 user = new Entities.User({ _id: id });
-                user.fetch();
+                user.fetch({cache: false});
                 return user;
             },
             saveUserEnitity: function (user) {

@@ -1,7 +1,11 @@
 <div class="row" style="height:200px">
   <div class="col-xs-3">
     <a class="th radius" href="#">
-      <img src="img/fry.jpg" style="height:180px; padding-top:10px" />
+      <% if (typeof Avatar != 'undefined') { %>
+      <img src="<%= 'data:image/png;base64,' + Avatar.data %>" style="height:180px; padding-top:10px" />
+      <% } else { %>
+        <img src="img/fry.jpg" style="height:180px; padding-top:10px" />
+      <% } %>
     </a>
   </div>
   <div class="col-xs-4" style="padding-top:55px;">
