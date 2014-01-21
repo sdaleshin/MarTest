@@ -1,19 +1,18 @@
 module.exports = function (app, options) {
 
     var fs = require('fs');
-    var mongoose = options.mongoose;
-    var Schema = options.mongoose.Schema;
+    var models = options.models;
     var db = options.db;
 
-    var UserModel = require('../schemas/userSchema')(db);
     var base64 = require('base64-js');
+    var UserModel = models.User;
 
     app.get('/api/users', function (req, res) {
         var qSkip = req.query.skip;
         var qTake = req.query.take;
         var qSort = req.query.sort;
         var qFilter = req.query.filter;
-        return UserModel.find().sort(qSort).skip(qSkip).limit(qTake)
+        return UserModel.find().select('Name Email Age').sort(qSort).skip(qSkip).limit(qTake)
         .exec(function (err, users) {
             res.send(users);
         });
@@ -24,7 +23,7 @@ module.exports = function (app, options) {
             console.log('err: ' + err);
             console.log('data: ' + data.length);
             return UserModel.findById(req.params.id, function (err, user) {
-                
+
                 user.Avatar.data = base64.fromByteArray(data);
                 user.Avatar.contentType = 'image/png';
                 user.save(function (err) {
@@ -32,7 +31,7 @@ module.exports = function (app, options) {
                 });
             });
         });
-        return res.send({result: 'ok'});
+        return res.send({ result: 'ok' });
     });
 
     app.post('/api/users', function (req, res) {
@@ -49,8 +48,12 @@ module.exports = function (app, options) {
     });
 
     app.get('/api/users/:id', function (req, res) {
-        return UserModel.findById(req.params.id, function (err, user) {
-            res.send(user);
+        return UserModel.find({ _id: req.params.id }).select('Name Email Age').exec(function (err, users) {
+            if (users.length == 1) {
+                res.send(users[0]);
+            } else {
+                res.json({ err: 'not found' });
+            }
         });
     });
 

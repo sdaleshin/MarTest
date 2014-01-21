@@ -3,10 +3,11 @@ define(["app", "apps/header/show/header_controller"], function (App) {
 
         var API = {
             showHeader: function () {
-                return HeaderApp.Show.Controller.showHeader();
+                this.Controller = new HeaderApp.Show.Controller();
+                return this.Controller;
             },
             setActiveMenuItem: function (item) {
-                return HeaderApp.Show.Controller.setActiveMenuItem(item);
+                return this.Controller.setActiveMenuItem(item);
             }
         };
 

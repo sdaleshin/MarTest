@@ -18,13 +18,7 @@ define(["app", "tpl!apps/users/list/templates/list-layout.ejs", "tpl!apps/users/
             },
             triggers: {
                 'click @ui.editUserButton': 'edit:user:entity'
-            },
-            //events: {
-            //    'click @ui.editUserButton': 'test'
-            //},
-            //test: function () {
-            //    debugger;
-            //}
+            }
         });
 
         List.Users = Marionette.CollectionView.extend({
