@@ -1,0 +1,1 @@
+define(["app"],function(e){e.module("Entities",function(e,t,n,r,i,s){e.Model=n.Model.extend({idAttribute:"_id"})})});

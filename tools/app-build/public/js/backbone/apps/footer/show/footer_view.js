@@ -1,0 +1,1 @@
+App.module("FooterApp.Show",function(e,t,n,r,i,s){e.Footer=r.ItemView.extend({template:s.template(i("#footer-show-view").html())})});

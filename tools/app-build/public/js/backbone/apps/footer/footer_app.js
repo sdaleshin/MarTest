@@ -1,0 +1,1 @@
+App.module("FooterApp",function(e,t,n,r,i,s){var o={showFooter:function(){return e.Show.Controller.showFooter()}};e.on("start",function(){o.showFooter()})});

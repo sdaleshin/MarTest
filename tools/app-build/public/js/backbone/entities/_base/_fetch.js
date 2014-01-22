@@ -1,0 +1,1 @@
+define(["app"],function(e){e.module("Entities",function(e,t,n,r,i,s){t.commands.setHandler("when:fetched",function(e,t,n){var r=s.chain([e]).flatten().pluck("_fetch").value();i.when.apply(i,r).done(function(){t.call(n||this)})})})});

@@ -21,8 +21,8 @@ require.config({
             exports: '_'
         },
         tpl: {
-            deps: ['underscore'],
-            exports: 'Backbone'
+            deps: ['underscore','backbone'],
+            //exports: 'Backbone'
         },
         load_image: {
             deps: ['jquery'],
@@ -43,7 +43,7 @@ require.config({
             exports: 'dataURLtoBlob'
         },
         marionette: {
-            deps: ['jquery', 'underscore', 'backbone', 'backbone_sync', 'backbone_stickit'],
+            deps: ['jquery', 'underscore', 'backbone', 'backbone_sync', 'backbone_stickit', 'tpl'],
             exports: 'Marionette'
         }
     }

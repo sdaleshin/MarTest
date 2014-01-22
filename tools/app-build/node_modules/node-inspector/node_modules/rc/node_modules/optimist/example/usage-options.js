@@ -1,0 +1,1 @@
+var optimist=require("./../index"),argv=optimist.usage("This is my awesome program",{about:{description:"Provide some details about the author of this program",required:!0,"short":"a"},info:{description:"Provide some information about the node.js agains!!!!!!","boolean":!0,"short":"i"}}).argv;optimist.showHelp(),console.log("\n\nInspecting options"),console.dir(argv);

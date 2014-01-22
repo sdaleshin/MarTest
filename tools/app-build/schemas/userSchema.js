@@ -1,0 +1,1 @@
+function UserShema(){var e=require("mongoose").Schema;return new e({Name:{type:String,required:!0},Email:{type:String,required:!0},Age:{type:Number,required:!0},Position:{type:String,required:!1},Avatar:{data:String,contentType:String,required:!1}})}module.exports=function(e){return e.model("UserShema",UserShema())};

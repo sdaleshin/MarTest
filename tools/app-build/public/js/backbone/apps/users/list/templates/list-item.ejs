@@ -1,0 +1,42 @@
+<div class="row" style="height:200px">
+  <div class="col-xs-3">
+    <a class="th radius" href="#">
+      <% if (typeof Avatar != 'undefined') { %>
+      <img src="<%= 'data:image/png;base64,' + Avatar.data %>" style="height:180px; padding-top:10px" />
+      <% } else { %>
+        <img src="img/fry.jpg" style="height:180px; padding-top:10px" />
+      <% } %>
+    </a>
+  </div>
+  <div class="col-xs-4" style="padding-top:55px;">
+    <div class="row user-info-row">
+      <div class="col-xs-7 user-info-label">Age</div>
+      <div class="col-xs-5 ">
+        <%= Age %>
+      </div>
+    </div>
+    <div class="row user-info-row">
+      <div class="col-xs-7 user-info-label">Name</div>
+      <div class="col-xs-5">
+        <%= Name %>
+        </div>
+    </div>
+    <div class="row user-info-row">
+      <div class="col-xs-7 user-info-label">Email</div>
+      <div class="col-xs-5">
+        <%= Email %>
+        </div>
+    </div>
+  </div>
+  <div class="col-xs-5">
+    <blockquote>
+      <button type="button" class="btn btn-default edit">
+        <span class="glyphicon glyphicon-edit"></span> Edit
+      </button>
+      <button type="button" class="btn btn-danger">
+        <span class="glyphicon glyphicon-remove"></span> Remove
+      </button>
+    </blockquote>
+  </div>
+</div>
+

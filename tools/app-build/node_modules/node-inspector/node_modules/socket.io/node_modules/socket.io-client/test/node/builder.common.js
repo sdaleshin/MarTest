@@ -1,0 +1,7 @@
+/*!
+ * socket.io-node
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+var vm=require("vm"),should=require("should");exports.env=function(){var t={location:{port:8080,host:"www.example.org",hostname:"www.example.org",href:"http://www.example.org/example/",pathname:"/example/",protocol:"http:",search:"",hash:""},console:{log:function(){},info:function(){},warn:function(){},error:function(){}},navigator:{userAgent:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_7) AppleWebKit/534.27 (KHTML, like Gecko) Chrome/12.0.716.0 Safari/534.27",appName:"socket.io",platform:process.platform,appVersion:process.version},name:"socket.io",innerWidth:1024,innerHeight:768,length:1,outerWidth:1024,outerHeight:768,pageXOffset:0,pageYOffset:0,screenX:0,screenY:0,screenLeft:0,screenTop:0,scrollX:0,scrollY:0,scrollTop:0,scrollLeft:0,screen:{width:0,height:0}};return t.window=t.self=t.contentWindow=t,t.Image=t.scrollTo=t.scrollBy=t.scroll=t.resizeTo=t.resizeBy=t.prompt=t.print=t.open=t.moveTo=t.moveBy=t.focus=t.createPopup=t.confirm=t.close=t.blur=t.alert=t.clearTimeout=t.clearInterval=t.setInterval=t.setTimeout=t.XMLHttpRequest=t.getComputedStyle=t.trigger=t.dispatchEvent=t.removeEventListener=t.addEventListener=function(){},t.frames=[t],t.document=t,t.document.domain=t.location.href,t},exports.execute=function(t){var n=exports.env(),r=vm.createScript(t);return r.runInNewContext(n),n};

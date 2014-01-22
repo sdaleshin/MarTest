@@ -1,0 +1,1 @@
+define(["app","entities/_base/model"],function(e){e.module("Entities",function(e,t,n,r,i,s){e.Collection=n.Collection.extend({model:e.Model})})});

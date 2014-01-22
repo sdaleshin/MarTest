@@ -1,4 +1,4 @@
-define(["app",,"entities/abstract/auth", "apps/header/show/header_view"], function (App) {
+define(["app","entities/abstract/auth", "apps/header/show/header_view"], function (App) {
     App.module('HeaderApp.Show', function (Show, App, Backbone, Marionette, $, _) {
 
         Show.Controller = Marionette.Controller.extend({

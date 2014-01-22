@@ -1,0 +1,1 @@
+App.module("HomeApp.List",function(e,t,n,r,i,s){e.Header=r.ItemView.extend({template:s.template(i("#header-show-view").html()),setActiveMenuItem:function(e){this.$(".main-menu li").removeClass("active"),this.$("."+e).addClass("active")}})});

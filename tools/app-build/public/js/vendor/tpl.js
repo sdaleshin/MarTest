@@ -1,0 +1,13 @@
+/**
+ * Adapted from the official plugin text.js
+ *
+ * Uses UnderscoreJS micro-templates : http://documentcloud.github.com/underscore/#template
+ * @author Julien Cabanès <julien@zeeagency.com>
+ * @version 0.2
+ * 
+ * @license RequireJS text 0.24.0 Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/requirejs for details
+ */
+
+(function(){var e=["Msxml2.XMLHTTP","Microsoft.XMLHTTP","Msxml2.XMLHTTP.4.0"],t=/^\s*<\?xml(\s)+version=[\'\"](\d)*.(\d)*[\'\"](\s)*\?>/im,n=/<body[^>]*>\s*([\s\S]+)\s*<\/body>/im,r=[],i={evaluate:/<%([\s\S]+?)%>/g,interpolate:/<%=([\s\S]+?)%>/g},s=function(e,t){var n=i,r="var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('"+e.replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(n.interpolate,function(e,t){return"',"+t.replace(/\\'/g,"'")+",'"}).replace(n.evaluate||null,function(e,t){return"');"+t.replace(/\\'/g,"'").replace(/[\r\n\t]/g," ")+"; __p.push('"}).replace(/\r/g,"").replace(/\n/g,"").replace(/\t/g,"")+"');}return __p.join('');";return r};define([],function(){var i,o,u;return typeof window!="undefined"&&window.navigator&&window.document?o=function(e,t){var n=i.createXhr();n.open("GET",e,!0),n.onreadystatechange=function(e){n.readyState===4&&t(n.responseText)},n.send(null)}:typeof process!="undefined"&&process.versions&&!!process.versions.node&&(u=require.nodeRequire("fs"),o=function(e,t){t(u.readFileSync(e,"utf8"))}),i={version:"0.24.0",strip:function(e){if(e){e=e.replace(t,"");var r=e.match(n);r&&(e=r[1])}else e="";return e},jsEscape:function(e){return e.replace(/(['\\])/g,"\\$1").replace(/[\f]/g,"\\f").replace(/[\b]/g,"\\b").replace(/[\n]/g,"").replace(/[\t]/g,"").replace(/[\r]/g,"")},createXhr:function(){var t,n,r;if(typeof XMLHttpRequest!="undefined")return new XMLHttpRequest;for(n=0;n<3;n++){r=e[n];try{t=new ActiveXObject(r)}catch(i){}if(t){e=[r];break}}if(!t)throw new Error("require.getXhr(): XMLHttpRequest not available");return t},get:o,load:function(e,t,n,o){var u=!1,a,f=e.indexOf("."),l=e.substring(0,f),c=e.substring(f+1,e.length);f=c.indexOf("!"),f!==-1&&(u=c.substring(f+1,c.length),u=u==="strip",c=c.substring(0,f)),a="nameToUrl"in t?t.nameToUrl(l,"."+c):t.toUrl(l+"."+c),i.get(a,function(t){t=s(t),o.isBuild||(t=new Function("obj",t)),t=u?i.strip(t):t,o.isBuild&&o.inlineText&&(r[e]=t),n(t)})},write:function(e,t,n){if(t in r){var s=i.jsEscape(r[t]);n("define('"+e+"!"+t+"', function() {return function(obj) { "+s.replace(/(\\')/g,"'").replace(/(\\\\)/g,"\\")+"}});\n")}}}})})();

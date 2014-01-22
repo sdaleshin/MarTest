@@ -2,7 +2,8 @@ define([
     "app",
     "tpl!apps/header/show/templates/header-layout.ejs",
     "tpl!apps/header/show/templates/menu-view.ejs",
-    "tpl!apps/header/show/templates/login-form-view.ejs"],
+    "tpl!apps/header/show/templates/login-form-view.ejs"
+],
     function (App, layout_template, menu_template, login_form_template) {
         App.module('HeaderApp.Show', function (Show, App, Backbone, Marionette, $, _) {
 
