@@ -115,13 +115,13 @@ node_modules/node-inspector/front-end/profilesPanel.css
 ----------------
 node_modules/node-inspector/front-end/profilesPanel.css
 
-node_modules/node-inspector/front-end/resourcesPanel.css
+node_modules/node-inspector/front-end/resourceView.css
 ----------------
-node_modules/node-inspector/front-end/resourcesPanel.css
+node_modules/node-inspector/front-end/resourceView.css
 
-node_modules/node-inspector/front-end/resourceView.css
+node_modules/node-inspector/front-end/resourcesPanel.css
 ----------------
-node_modules/node-inspector/front-end/resourceView.css
+node_modules/node-inspector/front-end/resourcesPanel.css
 
 node_modules/node-inspector/front-end/revisionHistory.css
 ----------------
